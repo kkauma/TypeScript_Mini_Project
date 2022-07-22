@@ -3,13 +3,19 @@ interface Todo {
   completed: boolean;
 }
 
-const todos: Todo[] = [];
-
 const btn = document.getElementById("btn")! as HTMLButtonElement; // add "!", guaranteed to not be null
 const input = document.getElementById("todoinput")! as HTMLInputElement; // Insist that this element exists
-// Need to tell TS that the above element is an HTMLInputElement
 const form = document.querySelector("form")!;
 const list = document.getElementById("todolist")!;
+
+const todos: Todo[] = readTodos();
+todos.forEach(createTodo);
+
+function readTodos(): Todo[] {
+  const todosJSON = localStorage.getItem("todos");
+  if (todosJSON === null) return [];
+  return JSON.parse(todosJSON);
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -32,8 +38,3 @@ function createTodo(todo: Todo) {
   newLI.append(checkbox);
   list.append(newLI);
 }
-
-// btn.addEventListener("click", () => {
-//   alert(input.value);
-//   input.value = "";
-// });

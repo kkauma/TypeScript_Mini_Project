@@ -1,10 +1,16 @@
 "use strict";
-const todos = [];
 const btn = document.getElementById("btn"); // add "!", guaranteed to not be null
 const input = document.getElementById("todoinput"); // Insist that this element exists
-// Need to tell TS that the above element is an HTMLInputElement
 const form = document.querySelector("form");
 const list = document.getElementById("todolist");
+const todos = readTodos();
+todos.forEach(createTodo);
+function readTodos() {
+    const todosJSON = localStorage.getItem("todos");
+    if (todosJSON === null)
+        return [];
+    return JSON.parse(todosJSON);
+}
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     const newTodo = {
@@ -24,7 +30,3 @@ function createTodo(todo) {
     newLI.append(checkbox);
     list.append(newLI);
 }
-// btn.addEventListener("click", () => {
-//   alert(input.value);
-//   input.value = "";
-// });
