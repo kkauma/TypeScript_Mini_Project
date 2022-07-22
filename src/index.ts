@@ -1,11 +1,8 @@
 const btn = document.getElementById("btn")!; // add "!", guaranteed to not be null
+const input = document.getElementById("todoinput")! as HTMLInputElement; // Insist that this element exists
+// Need to tell TS that the above element is an HTMLInputElement
 
 btn.addEventListener("click", () => {
-  alert("CLICKED!");
+  alert(input.value);
+  input.value = "";
 });
-
-// Type Assertions
-let mystery: unknown = "Hello, world!";
-
-// Asserting mystery to a string
-const numChars = (mystery as string).length;
