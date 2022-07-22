@@ -1,5 +1,5 @@
-const btn = document.getElementById("btn");
+const btn = document.getElementById("btn")!; // add "!", guaranteed to not be null
 
-btn?.addEventListener("click", () => {
+btn.addEventListener("click", () => {
   alert("CLICKED!");
 });

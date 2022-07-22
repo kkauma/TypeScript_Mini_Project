@@ -1,5 +1,5 @@
 "use strict";
-const btn = document.getElementById("btn");
-btn === null || btn === void 0 ? void 0 : btn.addEventListener("click", () => {
+const btn = document.getElementById("btn"); // add "!", guaranteed to not be null
+btn.addEventListener("click", () => {
     alert("CLICKED!");
 });
