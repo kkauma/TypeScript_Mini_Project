@@ -3,3 +3,7 @@ const btn = document.getElementById("btn"); // add "!", guaranteed to not be nul
 btn.addEventListener("click", () => {
     alert("CLICKED!");
 });
+// Type Assertions
+let mystery = "Hello, world!";
+// Asserting mystery to a string
+const numChars = mystery.length;

@@ -3,3 +3,9 @@ const btn = document.getElementById("btn")!; // add "!", guaranteed to not be nu
 btn.addEventListener("click", () => {
   alert("CLICKED!");
 });
+
+// Type Assertions
+let mystery: unknown = "Hello, world!";
+
+// Asserting mystery to a string
+const numChars = (mystery as string).length;
